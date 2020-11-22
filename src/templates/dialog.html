@@ -1,0 +1,33 @@
+<md-dialog ng-cloak>
+  <form>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon aria-label="Close dialog"> x </md-icon>
+      </md-button>
+    </div>
+    <md-dialog-content>
+      <section class="grid">
+        <div>
+          <h3 class="pokemon-name">{{ pokemon.name }}</h3>
+          <div class="image-container image-dialog">
+            <img ng-src="{{ pokemon.sprites.other.dream_world.front_default }}" alt="">
+          </div>
+        </div>
+
+        <div class="grid">
+          <div> <span class="title">Altura:</span> {{pokemon.height}} ft</div>
+          <div> <span class="title">Peso:</span> {{pokemon.weight}} lb</div>
+          <div class="full-width">
+            <span class="title"> Tipo:</span>
+            <span ng-repeat="type in  pokemon.types" class="type"> {{ type.type.name }}</span>
+          </div>
+          <div class="full-width">
+            <span class="title">Habilidades:</span>
+            <span ng-repeat="ability in  pokemon.abilities" class="ability"> {{ ability.ability.name }}</span></div>
+        </div>
+
+      </section>
+
+    </md-dialog-content>
+  </form>
+</md-dialog>
