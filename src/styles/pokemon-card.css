@@ -117,3 +117,22 @@
   padding: 8px;
   text-align: center;
 }
+
+
+.not-founded {
+  text-align: center;
+  height: 0;
+  overflow: hidden;
+}
+
+.not-founded img {
+  text-align: center;
+  width: 100px;
+  display: block;
+  margin: auto;
+}
+
+.display {
+  transition: 0.5s;
+  height: 200px;
+}

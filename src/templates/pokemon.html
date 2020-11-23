@@ -9,6 +9,11 @@
   <button ng-click="search()">Buscar</button>
 </div>
 
+<div  ng-class="{display: showNotFoundMessage} " class="not-founded">
+  ¡Pokémon no encontrado!
+  <img src="./assets/images/sad.png" alt="">
+</div>
+
 
 <div ng-cloak>
   <div ng-if="active" layout layout-wrap layout-sm="column" layout-xs="column">

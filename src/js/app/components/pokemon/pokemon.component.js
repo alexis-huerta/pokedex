@@ -31,6 +31,7 @@ angular.module('pokemon')
         $scope.totalPages = 0;
         $scope.pokemonTemp = [];
         $scope.pokemonName = "";
+        $scope.showNotFoundMessage = false;
 
        PokemonFactory.fetchPokemons().then(function(value) {
           $scope.pokemons = value; 
@@ -52,6 +53,12 @@ angular.module('pokemon')
 
       $scope.search = function() {
         $scope.pokemonTemp = $scope.pokemons.filter(pokemon => pokemon.name === $scope.pokemonName);
+
+        if($scope.pokemonTemp.length === 0) {
+          $scope.showNotFoundMessage = true;
+        } else {
+          $scope.showNotFoundMessage = false
+        }
         $scope.showCleanButton = true;
         $scope.showPagination = false
       }
@@ -59,7 +66,7 @@ angular.module('pokemon')
       $scope.activeCleanButton = function() {
         $scope.pokemonTemp = $scope.pokemons;
         $scope.pokemonName = "";
-        $scope.showCleanButton = true;
+        $scope.showCleanButton = false;
         $scope.showPagination = true;
       }
 
