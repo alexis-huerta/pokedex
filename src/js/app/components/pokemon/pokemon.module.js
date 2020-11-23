@@ -1,3 +1,3 @@
 'use stric';
 
-angular.module('pokemon', ["pokemons", "ngMaterial"]);
+angular.module('pokemon', ["pokemons", "ngMaterial", 'spinner']);

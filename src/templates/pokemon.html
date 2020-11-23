@@ -1,7 +1,6 @@
 <div class="pokedex-title">
   <img src="https://cdn.bulbagarden.net/upload/4/4b/Pok%C3%A9dex_logo.png" alt="">
 </div>
-
 <div class="search-container">
   <div class="input-container">
     <input ng-model="pokemonName" type="text">
@@ -11,8 +10,7 @@
 </div>
 
 
-<div ng-cloak ng-app="MyApp">
-
+<div ng-cloak>
   <div ng-if="active" layout layout-wrap layout-sm="column" layout-xs="column">
     <div ng-repeat="pokemon in pokemonTemp | limitTo: pageSize" flex="33" flex-sm="50" flex-xs="50" class="container">
       <md-card ng-style="getBgColor(pokemon.types[0].type.name)" fxFlex="40%;" fxFlex.xs="80%">
@@ -26,16 +24,20 @@
       </md-card>
     </div>
   </div>
+
+  <ul ng-if="showPagination && active" class="pagination">
+    <a ng-click="prev()" class="arrow arrow-left">
+      <span class="material-icons">
+        navigate_before
+      </span></a> <span class="pagination-number">{{ currentPage}} / {{totalPages}}</span>
+    <a ng-click="next()" class="arrow arrow-right">
+      <span class="material-icons">
+        navigate_next
+      </span>
+    </a>
+  </ul>
 </div>
 
-<ul ng-if="showPagination" class="pagination">
-  <a ng-click="prev()" class="arrow arrow-left">
-    <span class="material-icons">
-      navigate_before
-    </span></a> <span class="pagination-number">{{ currentPage}} / {{totalPages}}</span>
-  <a ng-click="next()" class="arrow arrow-right">
-    <span class="material-icons">
-      navigate_next
-    </span>
-  </a>
-</ul>
+
+<spinner ng-if="!active"></spinner>
+

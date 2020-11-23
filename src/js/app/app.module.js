@@ -1,3 +1,3 @@
 'use stric';
 
-angular.module('try', ['pokemon']);
+angular.module('try', ['pokemon', 'spinner']);

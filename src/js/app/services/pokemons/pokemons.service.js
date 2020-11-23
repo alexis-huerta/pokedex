@@ -3,7 +3,7 @@
 angular.module('pokemons')
 .factory('PokemonFactory', function ($http) {
     var url = 'https://pokeapi.co/api/v2/pokemon/';
-    const pokemonNumber = 80;
+    const pokemonNumber = 200;
     var pokemonFactory = {};
     var pokemonList = [];
 

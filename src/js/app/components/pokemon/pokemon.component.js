@@ -43,43 +43,17 @@ angular.module('pokemon')
            console.log($scope.pokemons); 
           
       }, function(reason) {
-        console.log(reason); // Error!
+        console.log(reason); 
       });
-
-      $scope.status = '  ';
-      $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
-    
-      $scope.showAdvanced = function(ev,selectedPokemon) {
-        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-        $mdDialog.show({
-          controller: DialogController,
-          templateUrl: './templates/dialog.html',
-          parent: angular.element(document.body),
-          targetEvent: ev,
-          clickOutsideToClose:true,
-          fullscreen: useFullScreen,
-          locals : {
-            pokemon : selectedPokemon
-        }
-        })
-        .then(function(answer) {});
-        $scope.$watch(function() {
-          return $mdMedia('xs') || $mdMedia('sm');
-        }, function(wantsFullScreen) {
-          $scope.customFullscreen = (wantsFullScreen === true);
-        });
-      };
 
       $scope.getBgColor = function(type) {
         return { 'background-color': colors[type]};
       }
 
-
       $scope.search = function() {
         $scope.pokemonTemp = $scope.pokemons.filter(pokemon => pokemon.name === $scope.pokemonName);
         $scope.showCleanButton = true;
         $scope.showPagination = false
-
       }
 
       $scope.activeCleanButton = function() {
@@ -108,6 +82,31 @@ angular.module('pokemon')
           $scope.currentPage = 1;
         }
       }
+
+
+      /*Diallos*/
+      $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+    
+      $scope.showAdvanced = function(ev,selectedPokemon) {
+        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+        $mdDialog.show({
+          controller: DialogController,
+          templateUrl: './templates/dialog.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: useFullScreen,
+          locals : {
+            pokemon : selectedPokemon
+        }
+        })
+        .then(function(answer) {});
+        $scope.$watch(function() {
+          return $mdMedia('xs') || $mdMedia('sm');
+        }, function(wantsFullScreen) {
+          $scope.customFullscreen = (wantsFullScreen === true);
+        });
+      };
     }
 })
 
