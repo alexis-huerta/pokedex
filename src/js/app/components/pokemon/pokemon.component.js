@@ -1,8 +1,8 @@
 'use strict'
 
-angular.module('pokemonCard')
-.component('pokemonCard', {
-    templateUrl: './templates/pokemon-card.html',
+angular.module('pokemon')
+.component('pokemon', {
+    templateUrl: './templates/pokemon.html',
     controller: function(PokemonFactory, $scope,  $mdDialog, $mdMedia) {
         var itemsPerPage = 20;
         const colors = {
@@ -24,6 +24,8 @@ angular.module('pokemonCard')
         const mainTypes = Object.keys(colors);
 
         $scope.active =  false;
+        $scope.showCleanButton = false;
+        $scope.showPagination = true;
         $scope.currentPage = 1;
         $scope.pageSize = 20;
         $scope.totalPages = 0;
@@ -74,9 +76,17 @@ angular.module('pokemonCard')
 
 
       $scope.search = function() {
-        $scope.pokemonTemp = $scope.pokemons.filter(pokemon => pokemon.name === $scope.pokemonName)
-        console.log($scope.pokemonTemp);
+        $scope.pokemonTemp = $scope.pokemons.filter(pokemon => pokemon.name === $scope.pokemonName);
+        $scope.showCleanButton = true;
+        $scope.showPagination = false
 
+      }
+
+      $scope.activeCleanButton = function() {
+        $scope.pokemonTemp = $scope.pokemons;
+        $scope.pokemonName = "";
+        $scope.showCleanButton = true;
+        $scope.showPagination = true;
       }
 
       $scope.next = function() {

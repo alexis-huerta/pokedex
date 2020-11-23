@@ -3,7 +3,10 @@
 </div>
 
 <div class="search-container">
-  <input ng-model="pokemonName" type="text">
+  <div class="input-container">
+    <input ng-model="pokemonName" type="text">
+    <span ng-if="showCleanButton" ng-click="activeCleanButton()" class="material-icons"> close </span>
+  </div>
   <button ng-click="search()">Buscar</button>
 </div>
 
@@ -25,7 +28,7 @@
   </div>
 </div>
 
-<ul class="pagination">
+<ul ng-if="showPagination" class="pagination">
   <a ng-click="prev()" class="arrow arrow-left">
     <span class="material-icons">
       navigate_before
