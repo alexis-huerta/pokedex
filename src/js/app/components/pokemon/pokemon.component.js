@@ -36,15 +36,12 @@ angular.module('pokemon')
        PokemonFactory.fetchPokemons().then(function(value) {
           $scope.pokemons = value; 
           $scope.pokemonTemp = value;
-          $scope.totalPages = Math.ceil( $scope.pokemonTemp.length / $scope.pageSize)
-          console.log($scope.totalPages);
+          $scope.totalPages = Math.ceil( $scope.pokemonTemp.length / $scope.pageSize);
            $scope.$apply(function () {
             $scope.active = true;
           });
-           console.log($scope.pokemons); 
           
       }, function(reason) {
-        console.log(reason); 
       });
 
       $scope.getBgColor = function(type) {
